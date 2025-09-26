@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,73 +20,60 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
+    <!-- Tasks RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTasks"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_below="@id/appBarLayout"
+        android:layout_above="@id/bottomNavigation"
+        android:padding="8dp"
+        android:clipToPadding="false" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <!-- Notes RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewNotes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBarLayout"
+        android:layout_above="@id/bottomNavigation"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:visibility="gone" />
 
-            <!-- Tasks RecyclerView -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewTasks"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp"
-                android:clipToPadding="false" />
+    <!-- Empty State for Tasks -->
+    <TextView
+        android:id="@+id/textViewEmptyTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="No tasks yet!\nTap the '+' button to add a new task."
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@color/onBackground"
+        android:visibility="gone" />
 
-            <!-- Notes RecyclerView -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewNotes"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp"
-                android:clipToPadding="false"
-                android:visibility="gone" />
-
-            <!-- Empty State for Tasks -->
-            <TextView
-                android:id="@+id/textViewEmptyTasks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="100dp"
-                android:text="No tasks yet!
-Tap + to add your first task"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textColor="@android:color/darker_gray"
-                android:visibility="gone" />
-
-            <!-- Empty State for Notes -->
-            <TextView
-                android:id="@+id/textViewEmptyNotes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="100dp"
-                android:text="No notes yet!
-Tap + to add your first note"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textColor="@android:color/darker_gray"
-                android:visibility="gone" />
-
-        </LinearLayout>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <!-- Empty State for Notes -->
+    <TextView
+        android:id="@+id/textViewEmptyNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="No notes yet!\nTap the '+' button to add a new note."
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@color/onBackground"
+        android:visibility="gone" />
 
     <!-- Floating Action Buttons -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
         android:src="@drawable/ic_add"
         android:contentDescription="Add Task" />
 
@@ -92,8 +81,10 @@ Tap + to add your first note"
         android:id="@+id/fabAddNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
         android:src="@drawable/ic_add"
         android:contentDescription="Add Note"
         android:visibility="gone" />
@@ -103,8 +94,8 @@ Tap + to add your first note"
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_menu"
         app:labelVisibilityMode="labeled" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
