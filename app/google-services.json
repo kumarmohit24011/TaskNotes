@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "277638811541",
+    "project_id": "task50-e2b92",
+    "storage_bucket": "task50-e2b92.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277638811541:android:31a6006a5b3b4c460b309c",
+        "android_client_info": {
+          "package_name": "com.tasknotesapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANnBqkC7Q1kbuwNCBwsM4I7b5ihHZhEOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
